@@ -1,0 +1,100 @@
+package sample;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+
+import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
+import java.util.*;
+import java.util.List;
+
+public class MetricController implements Initializable{
+
+    @FXML public List<MetricUnit> units = new ArrayList<MetricUnit>();
+
+    @FXML public ComboBox<String> unitBox;
+    @FXML public ComboBox<String> unitBoxTwo;
+
+    @FXML public TextField input;
+
+    @FXML public Text result;
+    @FXML public String textMetric;
+
+
+    @FXML protected void convert(ActionEvent event) {
+
+        double inputAsDouble = Double.parseDouble(input.getText());
+
+        MetricUnit firstMetric = new MetricUnit();
+        MetricUnit secondMetric = new MetricUnit();
+
+        for (MetricUnit metricUnit: units) {
+            if (metricUnit.name == unitBox.getValue()){
+                firstMetric = metricUnit;
+            }
+            if (metricUnit.name == unitBoxTwo.getValue()){
+                secondMetric = metricUnit;
+            }
+        }
+
+        calculateLengthMetric(firstMetric, secondMetric, inputAsDouble);
+    }
+
+
+    public double calculateMetric(MetricUnit a, MetricUnit b, double value) throws InvalidPropertiesFormatException {
+        // If types are not the same throw exception
+        if(a.type != b.type){
+            throw new InvalidPropertiesFormatException("Cannot convert metrics that are not of the same type");
+        }
+
+        // Check for type and calculate appropriate metric
+        switch (a.type){
+            case "length": calculateLengthMetric(a, b, value);
+                break;
+        }
+
+        return 200.;
+    }
+
+    // Calculate length metrics
+    public void calculateLengthMetric(MetricUnit a, MetricUnit b, double value){
+        double finalValue = (value * a.value) / b.value;
+        result.setText(String.valueOf(finalValue));
+        result.setText(result.getText() + " " + b.name);
+
+    }
+
+    public void setMetrics() {
+        // Length Metrics
+        MetricUnit centimeter = new MetricUnit("Centimeter","length", 1.);
+        units.add(centimeter);
+        MetricUnit meter = new MetricUnit("Meter","length", 100.);
+        units.add(meter);
+        MetricUnit kilometers = new MetricUnit("Kilometer","length", 100000.);
+        units.add(kilometers);
+
+        // Add the items to the combo boxes
+        for (MetricUnit unit: units) {
+            unitBox.getItems().add(unit.name);
+            unitBoxTwo.getItems().add(unit.name);
+        }
+
+
+        // Capacity Metrics
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setMetrics();
+    }
+}
+// Foreach loop
+//        for (MetricUnit unit : units) {
+//            System.out.println(unit.value);
+//            System.out.println(unit.type);
+//        }

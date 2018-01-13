@@ -1,37 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-
 <?import javafx.scene.layout.HBox?>
-<?import java.lang.Double?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <Text text="Welcome"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
-          GridPane.columnSpan="2"/>
 
-    <HBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button text="Add text"
-                onAction="#handleSubmitButtonAction"/>
-    </HBox>
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MetricController">
+   <children>
+      <VBox prefHeight="271.0" prefWidth="369.0" GridPane.rowIndex="2">
+         <children>
+            <HBox prefHeight="41.0" prefWidth="369.0">
+               <children>
+                  <ComboBox fx:id="unitBox" prefWidth="150.0" />
+                  <TextField fx:id="input" prefHeight="48.0" prefWidth="81.0" promptText="Input" />
+                  <ComboBox fx:id="unitBoxTwo" prefWidth="150.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                                     <Text fx:id="result" lineSpacing="2.0" text="Result" wrappingWidth="66.0">
+                     <HBox.margin>
+                        <Insets left="155.0" top="17.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox prefHeight="248.0" prefWidth="369.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#convert" text="Convert">
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
 
-    <HBox spacing="10" alignment="bottom_right"
-          GridPane.columnIndex="1" GridPane.rowIndex="5">
-        <Button text="Remove text"
-                onAction="#removeText"/>
-    </HBox>
 
-    <Text fx:id="actiontarget"
-          GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
-    <Text fx:id="secondActiontarget"
-          GridPane.columnIndex="0" GridPane.rowIndex="7"/>
 
 </GridPane>
-
-
-
-
-
