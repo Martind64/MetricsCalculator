@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javax.swing.*;
 import java.awt.*;
 import java.net.URL;
+import java.security.InvalidParameterException;
 import java.util.*;
 import java.util.List;
 
@@ -42,32 +43,26 @@ public class MetricController implements Initializable{
             }
         }
 
-        calculateLengthMetric(firstMetric, secondMetric, inputAsDouble);
+        calculateMetric(firstMetric, secondMetric, inputAsDouble);
     }
 
 
-    public double calculateMetric(MetricUnit a, MetricUnit b, double value) throws InvalidPropertiesFormatException {
+    public void calculateMetric(MetricUnit a, MetricUnit b, double value)  {
         // If types are not the same throw exception
         if(a.type != b.type){
-            throw new InvalidPropertiesFormatException("Cannot convert metrics that are not of the same type");
+            throw new InvalidParameterException("Cannot convert metrics that are not of the same type");
         }
 
-        // Check for type and calculate appropriate metric
-        switch (a.type){
-            case "length": calculateLengthMetric(a, b, value);
-                break;
-        }
 
-        return 200.;
-    }
-
-    // Calculate length metrics
-    public void calculateLengthMetric(MetricUnit a, MetricUnit b, double value){
         double finalValue = (value * a.value) / b.value;
         result.setText(String.valueOf(finalValue));
         result.setText(result.getText() + " " + b.name);
-
     }
+
+//    // Calculate length metrics
+//    public void calculateLengthMetric(MetricUnit a, MetricUnit b, double value){
+//
+//    }
 
     public void setMetrics() {
         // Length Metrics

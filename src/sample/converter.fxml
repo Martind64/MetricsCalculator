@@ -9,35 +9,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MetricController">
+<GridPane alignment="center" hgap="10" prefHeight="415.0" prefWidth="469.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MetricController">
    <children>
-      <VBox prefHeight="271.0" prefWidth="369.0" GridPane.rowIndex="2">
+      <VBox alignment="CENTER" prefHeight="304.0" prefWidth="479.0" GridPane.rowIndex="2">
          <children>
-            <HBox prefHeight="41.0" prefWidth="369.0">
+            <VBox alignment="CENTER" prefHeight="235.0" prefWidth="395.0">
                <children>
-                  <ComboBox fx:id="unitBox" prefWidth="150.0" />
-                  <TextField fx:id="input" prefHeight="48.0" prefWidth="81.0" promptText="Input" />
-                  <ComboBox fx:id="unitBoxTwo" prefWidth="150.0" />
+                  <HBox prefHeight="39.0" prefWidth="418.0" spacing="8.0">
+                     <children>
+                        <ComboBox fx:id="unitBox" prefWidth="150.0" />
+                        <TextField fx:id="input" prefHeight="48.0" prefWidth="81.0" promptText="Input" />
+                        <ComboBox fx:id="unitBoxTwo" prefWidth="150.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="38.0" prefWidth="369.0">
+                     <children>
+                        <Region prefHeight="68.0" prefWidth="197.0" HBox.hgrow="ALWAYS" />
+                                           <Text fx:id="result" lineSpacing="2.0" text="Result" wrappingWidth="66.0">
+                           <HBox.margin>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Region prefHeight="68.0" prefWidth="198.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="194.0" prefWidth="232.0">
+                     <children>
+                        <Region prefHeight="162.0" prefWidth="164.0" />
+                        <Button mnemonicParsing="false" onAction="#convert" text="Convert">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Region layoutX="10.0" layoutY="10.0" prefHeight="162.0" prefWidth="146.0" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                                     <Text fx:id="result" lineSpacing="2.0" text="Result" wrappingWidth="66.0">
-                     <HBox.margin>
-                        <Insets left="155.0" top="17.0" />
-                     </HBox.margin>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox prefHeight="248.0" prefWidth="369.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#convert" text="Convert">
-                     <HBox.margin>
-                        <Insets left="150.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </VBox>
          </children>
       </VBox>
 
@@ -46,13 +60,14 @@
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
+      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
+      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
       <RowConstraints />
-      <RowConstraints />
+      <RowConstraints maxHeight="284.0" minHeight="283.0" prefHeight="283.0" />
+      <RowConstraints maxHeight="2.0" minHeight="1.0" prefHeight="2.0" />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
